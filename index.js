@@ -1,4 +1,4 @@
-import express, { response } from 'express'
+import express from 'express'
 
 
 
@@ -19,8 +19,10 @@ const students =[
     {firstName: 'Harlie', LastName: 'Duperval'},
     {firstName: 'Jayden', LastName: 'Duperval'},
 ]
-app.get('/students', (req, res) => {
-    res.send(students)
+app.post('/students', (req, res) => {
+    const newStudent = req.body
+    students.push(newStudent)
+    res.status(201).send(students)
 })
 // Student Jonathan
 app.get('/students/:fName', (req , res) => {
